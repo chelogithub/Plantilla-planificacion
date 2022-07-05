@@ -117,9 +117,9 @@ Se adjunta a esta acta la planificación inicial.
 
 
 \begin{consigna}{black} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
-El proyecto a realizar es un sistema de monitoreo de servicios de planta. La empresa ROEMMERS elabora medicamentos en distintas presentaciones bajo las normas BPF (Buenas Practicas de Fabricación), normas que son exigidas por la A.N.M.A.T para autorizar su comercialización. %Ademas, en materia de reglamentación provincial, cumple con los requierimientos de OPDS y Acumar para el tratamiento de los efluentes industriales. 
+El proyecto a realizar es un sistema de monitoreo de servicios de planta. La empresa ROEMMERS elabora medicamentos en distintas presentaciones bajo las normas BPF (Buenas Prácticas de Fabricación), estas normas son exigidas por la A.N.M.A.T para autorizar su comercialización en el pais. %Ademas, en materia de reglamentación provincial, cumple con los requierimientos de OPDS y Acumar para el tratamiento de los efluentes industriales. 
 
-Para el cumplimiento de las reglamentaciones, se cuenta con los siguientes sistemas de control:
+Para el cumplimiento de las reglamentaciones y normas vigentes, se cuenta con los siguientes sistemas de control:
 \begin{itemize}
 	\item Sistema de control HVAC (Heating and Ventilating Air Conditioned)
 	\item Sistema de control de agua purificada, agua destilada y agua WFI (Water For Inyection)
@@ -132,11 +132,11 @@ Los sistemas de control se operan mediante SCADAS, la operación es llevada a ca
 
 Los SCADAS se encuentran distribuidos en 2 salas de control denominadas DDC1 y DDC2. La conexión con los sistemas de control se realiza por medio de una red de FO compuesta por 7 switches conectados en anillo. En la Figura 1 se observa un diagrama conceptual de la red. 
 
-En la actualidad, los suministros no se encuentran monitoreados por un SCADA, esto se debe a la distribución física de los servicios en la planta y a la escasa cantidad de variables requeridas en comparación a los sistemas de control. Estas características vuelven inviable el despliegue de una red cableada y su hardware, motivo por el cual, la lectura del estado de los servicios se realiza in situ mediante la implementación de un calendario de revisiones diarias. Dichas revisiones son realizadas por los técnicos de mantenimiento de servicios.
+En la actualidad, los suministros no se encuentran monitoreados mediante un SCADA, esto se debe a la distribución física de los servicios en la planta y a la escasa cantidad de variables que se requieren visualizar en comparación a los sistemas de control. Estas características vuelven inviable el despliegue de una red cableada y su hardware, motivo por el cual, la lectura del estado de los servicios se realiza in situ mediante la implementación de un calendario de revisiones diarias. Dichas revisiones son realizadas por los técnicos de mantenimiento de servicios.
 
-En una tarea conjunta del departamento de mantenimiento de servicios y del departamento de mantenimiento electrónico, se propone la creación de un sistema de monitoreo de servicios de planta. El sistema utilizará la red de FO actual, a la cual se accederá con tecnología de tipo inalámbrica, esta tecnología permitirá reducir significativamente los costos de implementación.
+En una tarea conjunta del departamento de mantenimiento de servicios y del departamento de mantenimiento electrónico, se propone la creación de un sistema de monitoreo de servicios de planta. El sistema utilizará la red de FO actual a la que se accederá con tecnología de tipo inalámbrica, esta tecnología permitirá reducir significativamente los costos de implementación.
 
-En la Figura 2, se observa el diagrama en bloques de una interfaz de conexión a la red, mientras que en la Figura 3 se observa el diagrama en bloques de una interfaz de adquisición, ambas interfaces conforman el enlace entre la red y los puntos de servicio. 
+En la Figura 2, se observa el diagrama en bloques de una interfaz de conexión a la red, mientras que en la Figura 3, se observa el diagrama en bloques de una interfaz de adquisición, ambas interfaces conforman el enlace entre la red y los puntos de servicio. 
 
 Se espera que el proyecto agregue valor de la siguiente manera:
 \begin{itemize}
@@ -247,7 +247,7 @@ El proyecto incluye en su alcance:
 	\item Diseño e instalación de las bases de datos
 	\item Desarrollo de una API para la comunicación con los dispositivos
 	\item Desarrollo de una SPA para el monitoreo de las variables
-	\item Desarrollo de una interfaz de conexión y una interfaz de adquisición capaces de transmitir información de manera inalámbrica utilizando los sigueintes protocolos: LoRa, LoRaWAN, Wi-Fi o ZigBee
+	\item Desarrollo de una interfaz de conexión y una interfaz de adquisición capaces de transmitir información de manera inalámbrica utilizando los siguientes protocolos a evaluar: LoRa, LoRaWAN, Wi-Fi o ZigBee
 	
 \end{itemize}
 
@@ -270,7 +270,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item Se tendrá acceso a un punto de servicio designado sobre el cual se realizará la instalación de la interfaz
 	\item Se dispondrá de recursos para la instalación de un servidor en la sala DDC1
 	\item Se tendrá acceso irrestricto al instrumental de laboratorio del departamento de mantenimiento electrónico
-	\item Se contará con la participación activa del personal de mantenimento de servicios y de un integrante del departamento de mantenimiento electrónico durante el desarrollo del proyecto
+	\item Se contará con la participación de un técnico del departamento de mantenimento de servicios y de un técnico del departamento de mantenimiento electrónico durante el desarrollo del proyecto
 \end{itemize}
 
 \end{consigna}
