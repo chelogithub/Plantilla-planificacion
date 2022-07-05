@@ -1,0 +1,634 @@
+\documentclass[
+11pt, % The default document font size, options: 10pt, 11pt, 12pt
+%codirector, % Uncomment to add a codirector to the title page
+]{charter} 
+
+
+
+
+% El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
+\titulo{Sistema de monitoreo de servicios de planta} 
+
+% Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
+%\posgrado{Carrera de Especialización en Sistemas Embebidos} 
+\posgrado{Carrera de Especialización en Internet de las Cosas} 
+%\posgrado{Carrera de Especialización en Intelegencia Artificial}
+%\posgrado{Maestría en Sistemas Embebidos} 
+%\posgrado{Maestría en Internet de las cosas}
+
+% Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
+\autor{Marcelo Roberto García} 
+
+% El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
+\director{Mg. Ing. Gonzalo Nahuel Vaca}
+\pertenenciaDirector{INVAP} 
+% FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
+%\codirector{John Doe} % para que aparezca en la portada se debe descomentar la opción codirector en el documentclass
+%\pertenenciaCoDirector{FIUBA}
+
+% Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
+\cliente{Ing Guillermo Horacio Vidal}
+\empresaCliente{ROEMMERS SAICF}
+
+% Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
+\juradoUno{Nombre y Apellido (1)}
+\pertenenciaJurUno{pertenencia (1)} 
+\juradoDos{Nombre y Apellido (2)}
+\pertenenciaJurDos{pertenencia (2)}
+\juradoTres{Nombre y Apellido (3)}
+\pertenenciaJurTres{pertenencia (3)}
+ 
+\fechaINICIO{21 de junio de 2022}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{9 de agosto de 2022} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{15 de mayo de 2023}	%Fecha de defensa pública del trabajo final
+
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagebreak
+
+
+\thispagestyle{empty}
+{\setlength{\parskip}{0pt}
+\tableofcontents{}
+}
+\pagebreak
+
+
+\section*{Registros de cambios}
+\label{sec:registro}
+
+
+\begin{table}[ht]
+\label{tab:registro}
+\centering
+\begin{tabularx}{\linewidth}{@{}|c|X|c|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
+0      & Creación del documento                                 &\fechaInicioName \\ \hline
+1      & Se completa hasta el punto 5 inclusive                 & 05/06/2022 \\ \hline
+%2      & Se completa hasta el punto 7 inclusive
+%		  Se puede agregar algo más \newline
+%		  En distintas líneas \newline
+%		  Así                                                    & dd/mm/aaaa \\ \hline
+%3      & Se completa hasta el punto 11 inclusive                & dd/mm/aaaa \\ \hline
+%4      & Se completa el plan	                                 & dd/mm/aaaa \\ \hline
+\end{tabularx}
+\end{table}
+
+\pagebreak
+
+
+
+\section*{Acta de constitución del proyecto}
+\label{sec:acta}
+
+\begin{flushright}
+Buenos Aires, \fechaInicioName
+\end{flushright}
+
+\vspace{2cm}
+
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en {la implementación de un servidor y una red de dispositivos distribuidos en planta para la lectura del estado de los servicios}, y tendrá un presupuesto preliminar estimado de {600} hs de trabajo y {USD 150}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+
+Se adjunta a esta acta la planificación inicial.
+
+\vfill
+
+% Esta parte se construye sola con la información que hayan cargado en el preámbulo del documento y no debe modificarla
+\begin{table}[ht]
+\centering
+\begin{tabular}{ccc}
+\begin{tabular}[c]{@{}c@{}}Ariel Lutenberg \\ Director posgrado FIUBA\end{tabular} & \hspace{2cm} & \begin{tabular}[c]{@{}c@{}}\clientename \\ \empclientename \end{tabular} \vspace{2.5cm} \\ 
+\multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}} \supname \\ Director del Trabajo Final\end{tabular}} \vspace{2.5cm} \\
+%\begin{tabular}[c]{@{}c@{}}\jurunoname \\ Jurado del Trabajo Final\end{tabular}     &  & \begin{tabular}[c]{@{}c@{}}\jurdosname\\ Jurado del Trabajo Final\end{tabular}  \vspace{2.5cm}  \\
+%\multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}} \jurtresname\\ Jurado del Trabajo Final\end{tabular}} \vspace{.5cm}                                                                     
+\end{tabular}
+\end{table}
+
+
+
+
+\section{1. Descripción técnica-conceptual del proyecto a realizar}
+\label{sec:descripcion}
+
+
+\begin{consigna}{black} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
+El proyecto a realizar es un sistema de monitoreo de servicios de planta. La empresa ROEMMERS elabora medicamentos en distintas presentaciones bajo las normas BPF (Buenas Prácticas de Fabricación), estas normas son exigidas por la A.N.M.A.T para autorizar su comercialización en el pais. %Ademas, en materia de reglamentación provincial, cumple con los requierimientos de OPDS y Acumar para el tratamiento de los efluentes industriales. 
+
+Para el cumplimiento de las reglamentaciones y normas vigentes, se cuenta con los siguientes sistemas de control:
+\begin{itemize}
+	\item Sistema de control HVAC (Heating and Ventilating Air Conditioned)
+	\item Sistema de control de agua purificada, agua destilada y agua WFI (Water For Inyection)
+	\item Sistema de control de vapor sanitario
+	\item Sistema de control de tratamiento de efluentes
+\end{itemize}
+%A su vez, estos sistemas requieren la provisión de vapor, aire comprimido, agua potable, electricidad y gas natural. 
+
+Los sistemas de control se operan mediante SCADAS, la operación es llevada a cabo por el departamento de mantenimiento de servicios, que también tiene como tarea asegurar los suministros de vapor, aire comprimido, agua potable, electricidad y gas natural para el funcionamiento de los sistemas.
+
+Los SCADAS se encuentran distribuidos en 2 salas de control denominadas DDC1 y DDC2. La conexión con los sistemas de control se realiza por medio de una red de FO compuesta por 7 switches conectados en anillo. En la Figura 1 se observa un diagrama conceptual de la red. 
+
+En la actualidad, los suministros no se encuentran monitoreados mediante un SCADA, esto se debe a la distribución física de los servicios en la planta y a la escasa cantidad de variables que se requieren visualizar en comparación a los sistemas de control. Estas características vuelven inviable el despliegue de una red cableada y su hardware, motivo por el cual, la lectura del estado de los servicios se realiza in situ mediante la implementación de un calendario de revisiones diarias. Dichas revisiones son realizadas por los técnicos de mantenimiento de servicios.
+
+En una tarea conjunta del departamento de mantenimiento de servicios y del departamento de mantenimiento electrónico, se propone la creación de un sistema de monitoreo de servicios de planta. El sistema utilizará la red de FO actual a la que se accederá con tecnología de tipo inalámbrica, esta tecnología permitirá reducir significativamente los costos de implementación.
+
+En la Figura 2, se observa el diagrama en bloques de una interfaz de conexión a la red, mientras que en la Figura 3, se observa el diagrama en bloques de una interfaz de adquisición, ambas interfaces conforman el enlace entre la red y los puntos de servicio. 
+
+Se espera que el proyecto agregue valor de la siguiente manera:
+\begin{itemize}
+	\item Optimizando el tiempo empleado en el relevamiento de los servicios
+	\item Aumentando la productividad del sector 
+	\item Suministrando datos que aporten el desarrollo de estrategias de mantenimiento predictivo
+	\item Fomentando la iniciativa de ambos departamentos mediante equipos de trabajo
+\end{itemize}
+
+
+%La planta cuenta con un departamento de mantenimiento que se encuentra formado por 3 sectores: mantenimiento mecánico, mantenimiento electrónico y mantenimiento de servcios. El deparatamento de mantenimiento de servicios opera los SCADAS mediante los cuales realiza la supervisión y control del funcionameinto de los sistemas de planta. Además, se encarga de garantizar la provisión de servicios requeridos por los sistemas de control.
+
+%\vspace{25px}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=0.75\textwidth]{./Figuras/diagrama_red_cel.png}
+\caption{Diagrama de la red}
+\label{fig:diagBloques}
+\end{figure}
+
+\vspace{5px}
+%\vspace{25px}
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.75\textwidth]{./Figuras/Interfaz_conn.png}
+\caption{Diagrama en bloques de la interfaz de conexión}
+\label{fig:diagBloques}
+\end{figure}
+
+\vspace{25px}
+%\vspace{25px}
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.75\textwidth]{./Figuras/Interfaz_captura.png}
+\caption{Diagrama en bloques de la interfaz de adquisición}
+\label{fig:diagBloques}
+\end{figure}
+
+\vspace{25px}
+
+
+
+
+\end{consigna}
+
+
+
+
+
+\section{2. Identificación y análisis de los interesados}
+\label{sec:interesados}
+
+\begin{consigna}{black} 
+
+\begin{table}[ht]
+%\caption{Identificación de los interesados}
+%\label{tab:interesados}
+\begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
+%Auspiciante   &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	& Jefe de Servicios
+       	\\ \hline
+%Impulsor      &                   &              	&        	\\ \hline
+Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
+%Colaboradores &                   &              	&        	\\ \hline
+Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
+%Equipo        & miembro1 \newline 
+				%&miembro2          &              	&        	\\ \hline
+%Opositores    &                   &              	&        	\\ \hline
+Usuario final &Supervisor y técnicos de manatenimiento de servicios                    &ROEMMERS SAICF              	&   -     	\\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{itemize}
+	\item Cliente: cumple también el rol de usuario final.
+
+\end{itemize}
+
+\end{consigna}
+
+
+
+\section{3. Propósito del proyecto}
+\label{sec:proposito}
+
+\begin{consigna}{black}
+El propósito de este proyecto es:
+\begin{itemize}
+	\item Implementar la lectura de estado y variables criticas de los servicios utilizados para el funcionamiento de los sistemas.
+	\item Incorporar el uso de nuevas tecnologías para el despliegue de red utilizando la red FO actual
+	\item Brindar herramientas al departamento de mantenimiento de servicios para poder implementar estategias de mantenimiento predictivo.
+	\item Reducir la frecuencia de chequeo in situ de las instalaciones
+\end{itemize}
+\end{consigna}
+
+\section{4. Alcance del proyecto}
+\label{sec:alcance}
+
+\begin{consigna}{black}
+El proyecto incluye en su alcance:
+\begin{itemize}
+ 
+	\item Instalación de un servidor en sala de control DDC1
+	\item Diseño e instalación de las bases de datos
+	\item Desarrollo de una API para la comunicación con los dispositivos
+	\item Desarrollo de una SPA para el monitoreo de las variables
+	\item Desarrollo de una interfaz de conexión y una interfaz de adquisición capaces de transmitir información de manera inalámbrica utilizando los siguientes protocolos a evaluar: LoRa, LoRaWAN, Wi-Fi o ZigBee
+	
+\end{itemize}
+
+El proyecto no incluye en su alcance:
+\begin{itemize}
+	\item Conexión del sistema a internet
+	\item Desarrolo de App movil
+\end{itemize}
+
+\end{consigna}
+
+
+\section{5. Supuestos del proyecto}
+\label{sec:supuestos}
+
+\begin{consigna}{black}
+Para el desarrollo del presente proyecto se supone que:
+
+\begin{itemize}
+	\item Se tendrá acceso a un punto de servicio designado sobre el cual se realizará la instalación de la interfaz
+	\item Se dispondrá de recursos para la instalación de un servidor en la sala DDC1
+	\item Se tendrá acceso irrestricto al instrumental de laboratorio del departamento de mantenimiento electrónico
+	\item Se contará con la participación de un técnico del departamento de mantenimento de servicios y de un técnico del departamento de mantenimiento electrónico durante el desarrollo del proyecto
+\end{itemize}
+
+\end{consigna}
+
+\section{6. Requerimientos}
+\label{sec:requerimientos}
+
+\begin{consigna}{red}
+Los requerimientos deben numerarse y de ser posible estar agruparlos por afinidad, por ejemplo:
+
+\begin{enumerate}
+	\item Requerimientos funcionales
+		\begin{enumerate}
+			\item El sistema debe...
+			\item Tal componente debe...
+			\item El usuario debe poder...
+		\end{enumerate}
+	\item Requerimientos de documentación
+		\begin{enumerate}
+			\item Requerimiento 1
+			\item Requerimiento 2 (prioridad menor)
+		\end{enumerate}
+	\item Requerimiento de testing...
+	\item Requerimientos de la interfaz...
+	\item Requerimientos interoperabilidad...
+	\item etc...
+\end{enumerate}
+
+Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
+
+Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
+
+No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
+
+Y al escribirlos seguir las siguientes reglas:
+\begin{itemize}
+	\item Ser breve y conciso (nadie lee cosas largas). 
+	\item Ser específico: no dejar lugar a confusiones.
+	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
+\end{itemize}
+
+\end{consigna}
+
+\section{7. Historias de usuarios (\textit{Product backlog})}
+\label{sec:backlog}
+
+\begin{consigna}{red}
+Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+
+El formato propuesto es: "como [rol] quiero [tal cosa] para [tal otra cosa]."
+
+Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
+\end{consigna}
+
+\section{8. Entregables principales del proyecto}
+\label{sec:entregables}
+
+\begin{consigna}{red}
+
+Los entregables del proyecto son (ejemplo):
+
+\begin{itemize}
+	\item Manual de uso
+	\item Diagrama de circuitos esquemáticos
+	\item Código fuente del firmware
+	\item Diagrama de instalación
+	\item Informe final
+	\item etc...
+\end{itemize}
+
+\end{consigna}
+
+\section{9. Desglose del trabajo en tareas}
+\label{sec:wbs}
+
+\begin{consigna}{red}
+El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
+
+\begin{enumerate}
+\item Grupo de tareas 1
+	\begin{enumerate}
+	\item Tarea 1 (tantas hs)
+	\item Tarea 2 (tantas hs)
+	\item Tarea 3 (tantas hs)
+	\end{enumerate}
+\item Grupo de tareas 2
+	\begin{enumerate}
+	\item Tarea 1 (tantas hs)
+	\item Tarea 2 (tantas hs)
+	\item Tarea 3 (tantas hs)
+	\end{enumerate}
+\item Grupo de tareas 3
+	\begin{enumerate}
+	\item Tarea 1 (tantas hs)
+	\item Tarea 2 (tantas hs)
+	\item Tarea 3 (tantas hs)
+	\item Tarea 4 (tantas hs)
+	\item Tarea 5 (tantas hs)
+	\end{enumerate}
+\end{enumerate}
+
+Cantidad total de horas: (tantas hs)
+
+Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
+
+\end{consigna}
+
+\section{10. Diagrama de Activity On Node}
+\label{sec:AoN}
+
+\begin{consigna}{red}
+Armar el AoN a partir del WBS definido en la etapa anterior. 
+
+%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
+
+%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
+
+\end{consigna}
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+\caption{Diagrama en \textit{Activity on Node}}
+\label{fig:AoN}
+\end{figure}
+
+Indicar claramente en qué unidades están expresados los tiempos.
+De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
+Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
+
+
+
+\section{11. Diagrama de Gantt}
+\label{sec:gantt}
+
+\begin{consigna}{red}
+
+Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre los cuales destacamos:
+
+\begin{itemize}
+\item Planner
+\item GanttProject
+\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
+\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
+\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
+\end{itemize}
+
+Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
+Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
+
+Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
+Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
+Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
+
+En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{ganttchart}{1}{12}
+  \gantttitle{2020}{12} \\
+  \gantttitlelist{1,...,12}{1} \\
+  \ganttgroup{Group 1}{1}{7} \\
+  \ganttbar{Task 1}{1}{2} \\
+  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
+  \ganttmilestone{Milestone o hito}{7} \ganttnewline
+  \ganttbar{Final Task}{8}{12}
+  \ganttlink{elem2}{elem3}
+  \ganttlink{elem3}{elem4}
+\end{ganttchart}
+\end{center}
+\caption{Diagrama de gantt de ejemplo}
+\label{fig:gantt}
+\end{figure}
+
+
+\begin{landscape}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
+\caption{Ejemplo de diagrama de Gantt rotado}
+\label{fig:diagGantt}
+\end{figure}
+
+\end{landscape}
+
+\end{consigna}
+
+
+\section{12. Presupuesto detallado del proyecto}
+\label{sec:presupuesto}
+
+\begin{consigna}{red}
+Si el proyecto es complejo entonces separarlo en partes:
+\begin{itemize}
+	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
+	\item El desglose detallado del subtotal de cada una de las áreas.
+\end{itemize}
+
+IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
+
+\end{consigna}
+
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+Descripción &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
+ &
+  \multicolumn{1}{c|}{} &
+  \multicolumn{1}{c|}{} &
+  \multicolumn{1}{c|}{} \\ \hline
+ &
+  \multicolumn{1}{c|}{} &
+  \multicolumn{1}{c|}{} &
+  \multicolumn{1}{c|}{} \\ \hline
+\multicolumn{1}{|l|}{} &
+   &
+   &
+   \\ \hline
+\multicolumn{1}{|l|}{} &
+   &
+   &
+   \\ \hline
+\multicolumn{3}{|c|}{SUBTOTAL} &
+  \multicolumn{1}{c|}{} \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+Descripción &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
+\multicolumn{1}{|l|}{} &
+   &
+   &
+   \\ \hline
+\multicolumn{1}{|l|}{} &
+   &
+   &
+   \\ \hline
+\multicolumn{1}{|l|}{} &
+   &
+   &
+   \\ \hline
+\multicolumn{3}{|c|}{SUBTOTAL} &
+  \multicolumn{1}{c|}{} \\ \hline
+\rowcolor[HTML]{C0C0C0}
+\multicolumn{3}{|c|}{TOTAL} &
+   \\ \hline
+\end{tabularx}%
+\end{table}
+
+
+\section{13. Gestión de riesgos}
+\label{sec:riesgos}
+
+\begin{consigna}{red}
+a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
+ 
+Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
+\begin{itemize}
+	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
+	Justificar el motivo por el cual se asigna determinado número de severidad (S).
+	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
+	Justificar el motivo por el cual se asigna determinado número de (O). 
+\end{itemize}   
+
+Riesgo 2:
+\begin{itemize}
+	\item Severidad (S): 
+	\item Ocurrencia (O):
+\end{itemize}
+
+Riesgo 3:
+\begin{itemize}
+	\item Severidad (S): 
+	\item Ocurrencia (O):
+\end{itemize}
+
+
+b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
+       &   &   &     &    &    &      \\ \hline
+       &   &   &     &    &    &      \\ \hline
+       &   &   &     &    &    &      \\ \hline
+       &   &   &     &    &    &      \\ \hline
+       &   &   &     &    &    &      \\ \hline
+\end{tabularx}%
+\end{table}
+
+Criterio adoptado: 
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+
+Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
+
+c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
+ 
+Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+  Nueva asignación de S y O, con su respectiva justificación:
+  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
+          Justificar el motivo por el cual se asigna determinado número de severidad (S).
+  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
+          Justificar el motivo por el cual se asigna determinado número de (O).
+
+Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+ 
+Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+
+\end{consigna}
+
+
+\section{14. Gestión de la calidad}
+\label{sec:calidad}
+
+\begin{consigna}{red}
+Para cada uno de los requerimientos del proyecto indique:
+\begin{itemize} 
+\item Req \#1: copiar acá el requerimiento.
+
+\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
+	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+\end{itemize}
+
+\end{itemize}
+
+Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
+
+\end{consigna}
+
+\section{15. Procesos de cierre}    
+\label{sec:cierre}
+
+\begin{consigna}{red}
+Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+
+\begin{itemize}
+	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
+	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
+	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
+	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
+	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
+	  - Indicar esto y quién financiará los gastos correspondientes.
+\end{itemize}
+
+\end{consigna}
+
+
+\end{document}
