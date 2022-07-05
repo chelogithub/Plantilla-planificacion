@@ -1,6 +1,6 @@
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
-codirector, % Uncomment to add a codirector to the title page
+%codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
 
@@ -20,15 +20,15 @@ codirector, % Uncomment to add a codirector to the title page
 \autor{Marcelo Roberto García} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Gonzalo Nahuel Vacca}
-\pertenenciaDirector{pertenencia} 
+\director{Mg. Ing. Gonzalo Nahuel Vaca}
+\pertenenciaDirector{INVAP} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
-\codirector{John Doe} % para que aparezca en la portada se debe descomentar la opción codirector en el documentclass
-\pertenenciaCoDirector{FIUBA}
+%\codirector{John Doe} % para que aparezca en la portada se debe descomentar la opción codirector en el documentclass
+%\pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Ing Guillermo Horacio Vidal}
+\empresaCliente{ROEMMERS SAICF}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -38,9 +38,9 @@ codirector, % Uncomment to add a codirector to the title page
 \juradoTres{Nombre y Apellido (3)}
 \pertenenciaJurTres{pertenencia (3)}
  
-\fechaINICIO{30 de abril de 2021}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2021} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2022}	%Fecha de defensa pública del trabajo final
+\fechaINICIO{21 de junio de 2022}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{9 de agosto de 2022} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{15 de mayo de 2023}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -69,7 +69,7 @@ codirector, % Uncomment to add a codirector to the title page
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 4 inclusive                 & dd/mm/aaaa \\ \hline
+1      & Se completa hasta el punto 5 inclusive                 & 05/06/2022 \\ \hline
 %2      & Se completa hasta el punto 7 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -92,7 +92,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de un calefón}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en {la implementación de un servidor y una red de dispositivos distribuidos en planta para la lectura del estado de los servicios}, y tendrá un presupuesto preliminar estimado de {600} hs de trabajo y {USD 150}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -116,56 +116,82 @@ Se adjunta a esta acta la planificación inicial.
 \label{sec:descripcion}
 
 
-\begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
+\begin{consigna}{black} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
+El proyecto a realizar es un sistema de monitoreo de servicios de planta. La empresa ROEMMERS elabora medicamentos en distintas presentaciones bajo las normas BPF (Buenas Practicas de Fabricación), normas que son exigidas por la A.N.M.A.T para autorizar su comercialización. %Ademas, en materia de reglamentación provincial, cumple con los requierimientos de OPDS y Acumar para el tratamiento de los efluentes industriales. 
 
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
-
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
+Para el cumplimiento de las reglamentaciones, se cuenta con los siguientes sistemas de control:
 \begin{itemize}
-	\item ¿Cómo se vincula este proyecto con la misión de la organización?
-	\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-	\item ¿Cuáles son las necesidades que debe satisfacer?
-	\item ¿Por dónde pasa la innovación?
+	\item Sistema de control HVAC (Heating and Ventilating Air Conditioned)
+	\item Sistema de control de agua purificada, agua destilada y agua WFI (Water For Inyection)
+	\item Sistema de control de vapor sanitario
+	\item Sistema de control de tratamiento de efluentes
+\end{itemize}
+%A su vez, estos sistemas requieren la provisión de vapor, aire comprimido, agua potable, electricidad y gas natural. 
+
+Los sistemas de control se operan mediante SCADAS, la operación es llevada a cabo por el departamento de mantenimiento de servicios, que también tiene como tarea asegurar los suministros de vapor, aire comprimido, agua potable, electricidad y gas natural para el funcionamiento de los sistemas.
+
+Los SCADAS se encuentran distribuidos en 2 salas de control denominadas DDC1 y DDC2. La conexión con los sistemas de control se realiza por medio de una red de FO compuesta por 7 switches conectados en anillo. En la Figura 1 se observa un diagrama conceptual de la red. 
+
+En la actualidad, los suministros no se encuentran monitoreados por un SCADA, esto se debe a la distribución física de los servicios en la planta y a la escasa cantidad de variables requeridas en comparación a los sistemas de control. Estas características vuelven inviable el despliegue de una red cableada y su hardware, motivo por el cual, la lectura del estado de los servicios se realiza in situ mediante la implementación de un calendario de revisiones diarias. Dichas revisiones son realizadas por los técnicos de mantenimiento de servicios.
+
+En una tarea conjunta del departamento de mantenimiento de servicios y del departamento de mantenimiento electrónico, se propone la creación de un sistema de monitoreo de servicios de planta. El sistema utilizará la red de FO actual, a la cual se accederá con tecnología de tipo inalámbrica, esta tecnología permitirá reducir significativamente los costos de implementación.
+
+En la Figura 2, se observa el diagrama en bloques de una interfaz de conexión a la red, mientras que en la Figura 3 se observa el diagrama en bloques de una interfaz de adquisición, ambas interfaces conforman el enlace entre la red y los puntos de servicio. 
+
+Se espera que el proyecto agregue valor de la siguiente manera:
+\begin{itemize}
+	\item Optimizando el tiempo empleado en el relevamiento de los servicios
+	\item Aumentando la productividad del sector 
+	\item Suministrando datos que aporten el desarrollo de estrategias de mantenimiento predictivo
+	\item Fomentando la iniciativa de ambos departamentos mediante equipos de trabajo
 \end{itemize}
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase, se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
 
+%La planta cuenta con un departamento de mantenimiento que se encuentra formado por 3 sectores: mantenimiento mecánico, mantenimiento electrónico y mantenimiento de servcios. El deparatamento de mantenimiento de servicios opera los SCADAS mediante los cuales realiza la supervisión y control del funcionameinto de los sistemas de planta. Además, se encarga de garantizar la provisión de servicios requeridos por los sistemas de control.
+
+%\vspace{25px}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=0.75\textwidth]{./Figuras/diagrama_red.png}
+\caption{Diagrama de la red}
+\label{fig:diagBloques}
+\end{figure}
+
+\vspace{5px}
 %\vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.5\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
+\includegraphics[width=.75\textwidth]{./Figuras/Interfaz_conn.png}
+\caption{Diagrama en bloques de la interfaz de conexión}
+\label{fig:diagBloques}
+\end{figure}
+
+\vspace{25px}
+%\vspace{25px}
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.75\textwidth]{./Figuras/Interfaz_captura.png}
+\caption{Diagrama en bloques de la interfaz de adquisición}
 \label{fig:diagBloques}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño de la tipografía en TODAS las figuras debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama, preferentemente en la gama de colores pastel.
+
+
+
 \end{consigna}
+
+
+
 
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
+\begin{consigna}{black} 
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -174,32 +200,23 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+%Auspiciante   &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	& Jefe de Servicios
+       	\\ \hline
+%Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
+%Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+%Equipo        & miembro1 \newline 
+				%&miembro2          &              	&        	\\ \hline
+%Opositores    &                   &              	&        	\\ \hline
+Usuario final &Supervisor y técnicos de manatenimiento de servicios                    &ROEMMERS SAICF              	&   -     	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-	\item Orientador: María Gómez va a poder ayudar mucho con la definición de los requerimientos.
+	\item Cliente: cumple también el rol de usuario final.
+
 \end{itemize}
 
 \end{consigna}
@@ -209,23 +226,36 @@ Por ejemplo:
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
+\begin{consigna}{black}
+El propósito de este proyecto es:
+\begin{itemize}
+	\item Implementar la lectura de estado y variables criticas de los servicios utilizados para el funcionamiento de los sistemas.
+	\item Incorporar el uso de nuevas tecnologías para el despliegue de red utilizando la red FO actual
+	\item Brindar herramientas al departamento de mantenimiento de servicios para poder implementar estategias de mantenimiento predictivo.
+	\item Reducir la frecuencia de chequeo in situ de las instalaciones
+\end{itemize}
 \end{consigna}
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+\begin{consigna}{black}
+El proyecto incluye en su alcance:
+\begin{itemize}
+ 
+	\item Instalación de un servidor en sala de control DDC1
+	\item Diseño e instalación de las bases de datos
+	\item Desarrollo de una API para la comunicación con los dispositivos
+	\item Desarrollo de una SPA para el monitoreo de las variables
+	\item Desarrollo de una interfaz de conexión y una interfaz de adquisición capaces de transmitir información de manera inalámbrica utilizando los sigueintes protocolos: LoRa, LoRaWAN, Wi-Fi o ZigBee
+	
+\end{itemize}
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
+El proyecto no incluye en su alcance:
+\begin{itemize}
+	\item Conexión del sistema a internet
+	\item Desarrolo de App movil
+\end{itemize}
 
 \end{consigna}
 
@@ -233,15 +263,16 @@ Explicitar además todo lo que no quede incluido (``El presente proyecto no incl
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+\begin{consigna}{black}
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-	\item Supuesto 1
-	\item Supuesto 2...
+	\item Se tendrá acceso a un punto de servicio designado sobre el cual se realizará la instalación de la interfaz
+	\item Se dispondrá de recursos para la instalación de un servidor en la sala DDC1
+	\item Se tendrá acceso irrestricto al instrumental de laboratorio del departamento de mantenimiento electrónico
+	\item Se contará con la participación activa del personal de mantenimento de servicios y de un integrante del departamento de mantenimiento electrónico durante el desarrollo del proyecto
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
 \end{consigna}
 
 \section{6. Requerimientos}
