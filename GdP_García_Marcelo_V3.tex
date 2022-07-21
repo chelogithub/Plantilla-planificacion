@@ -3,6 +3,8 @@
 %codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes, arrows.meta, positioning}
 
 
 
@@ -70,16 +72,17 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                 & 5 de julio de 2022 \\ \hline
-1.1      & Se corrigen errores de redacción y se modfician gráficos			               & 8 de julio de 2022 \\ \hline
+1.1      & Se corrigen errores de redacción y se modifican gráficos			               & 8 de julio de 2022 \\ \hline
 2      & Se completa hasta el punto 9 inclusive 			               & 11 de julio de 2022 \\ \hline
-%2      & Se completa hasta el punto 7 inclusive
+2.1      & Se corrigen errores de redacción 			               & 11 de julio de 2022 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
-%3      & Se completa hasta el punto 11 inclusive                & dd/mm/aaaa \\ \hline
+3      & Se completa hasta el punto 12 inclusive                & 19 de julio de 2022 \\ \hline
 %4      & Se completa el plan	                                 & dd/mm/aaaa \\ \hline
 \end{tabularx}
 \end{table}
+
 
 \pagebreak
 
@@ -314,8 +317,8 @@ Para el desarrollo del presente proyecto se supone que:
 			\item Se debe crear un manual de uso de las interfaces.
 			\item Se debe crear un protocolo de pruebas para validar el funcionamiento del sistema.
 			\item Se debe generar un informe con las pruebas de funcionamiento del sistema en campo.
-			\item Se debe generar un informe de avance.
-			\item Se debe generar una memoria de proyecto.
+			\item Se debe generar un informe de avance del proyecto.
+			\item Se debe generar una memoria del proyecto.
 
 		\end{enumerate}
 	%\item Requerimiento de testing...
@@ -421,10 +424,10 @@ Los entregables del proyecto son:
 	\end{enumerate}
 \item Investigación (62 hs)
 	\begin{enumerate}
-	\item Prueba en campo de tecnologías LoRA / LoRAWAN (26 hs).
-	\item Prueba en campo de tecnologías Zigbee / Wi-Fi (26 hs).
+	\item Prueba en campo de tecnologías LoRA / LoRAWAN (24 hs).
+	\item Prueba en campo de tecnologías Zigbee / Wi-Fi (24 hs).
 	\item Determinar método de medición de datos (2 hs).
-	\item Evaluar herramientas de representación de datos con dashboards y gráficos (8 hs).
+	\item Evaluar herramientas de representación de datos con dashboards y gráficos (12 hs).
 	\end{enumerate}
 \item Backend (63 hs)
 	\begin{enumerate}
@@ -434,54 +437,73 @@ Los entregables del proyecto son:
 	\end{enumerate}
 \item Frontend (75 hs)
 	\begin{enumerate}
-	\item Creación de la SPA (40 hs).
-	\item Integración de las herramientas para la representación de datos (35 hs).
+	\item Creación de la SPA (38 hs).
+	\item Integración de las herramientas para la representación de datos (32 hs).
+	\item Integración con Backend (5 hs).
 	\end{enumerate}
 \item Interfaz de comunicación (142 hs)
 	\begin{enumerate}
 	\item Desarrollo del firmware de la interfaz de comunicación (40 hs).
-	\item Creación de biblioteca ModBUS (22 hs).
-	\item Creación de biblioteca SPI para adaptador Ethernet WZ5100 (35 hs).
+	\item Creación de biblioteca ModBUS (18 hs).
+	\item Creación de biblioteca SPI para adaptador Ethernet W5100 (35 hs).
 	\item Creación de biblioteca para radio del dispositivo (25 hs).
 	\item Diseño del circuito impreso de la interfaz de comunicación (12 hs).
+	\item Armado y prueba del circuito impreso en laboratorio (8 hs).
 	\item Diseño del gabinete (8 hs).
 	\end{enumerate}
 \item Interfaz de adquisición (88 hs)
 	\begin{enumerate}
 	\item Desarrollo del firmware de la interfaz de adquisición (35 hs).
-	\item Prueba del circuito en laboratorio (24 hs).
+	\item Diseño del circuito GPIO adaptador de niveles (12 hs).
+	\item Prueba del circuito en laboratorio (4 hs).
 	\item Diseño del circuito impreso de la interfaz de adquisición (18 hs).
+	\item Armado y prueba del circuito impreso de la interfaz de adquisición (8 hs).
 	\item Diseño del gabinete (11 hs).
 	\end{enumerate}
 \item Pruebas del sistema (64 hs)
 	\begin{enumerate}
-	\item Seguimiento del funcionamiento del sistema en campo (39 hs).
 	\item Creación y ejecución del protocolo de pruebas del sistema (25 hs)
+	\item Seguimiento del funcionamiento del sistema en campo (39 hs).
 	\end{enumerate}
 \item Cierre (91 hs)
 	\begin{enumerate}
-	\item Creación de manuales de uso e instalación (20 hs).
+	\item Creación de manuales de uso e instalación (18 hs).
 	\item Creación de informes de avance de proyecto (15 hs).
-	\item Creación de informe final de desempeño del proyecto (22 hs).
-	\item Creación de la memoria del trabajo (25 hs).
+	\item Creación de informe final de desempeño del proyecto (20 hs).
+	\item Creación de la memoria del trabajo (29 hs).
 	\item Creación del video de demostración (8 hs).
 	\item Defensa pública y agradecimientos(1 hs).
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (630 hs)
+Cantidad total de horas: (600 hs)
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
+
+
 Armar el AoN a partir del WBS definido en la etapa anterior. 
 
 %La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
 
 %\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
 
-\end{consigna}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+<TikZ code>
+
+\node (a) [startstop] {INICIO};
+\node (b) [io, below of=a] {test};
+
+\node (in) [io, below of=b] {Input};
+
+\draw [arrow] (a) -- (b);
+
+\end{tikzpicture}
 
 \begin{figure}[htpb]
 \centering 
@@ -529,7 +551,7 @@ En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realiza
   \ganttbar{Task 1}{1}{2} \\
   \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
   \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
+   \ganttbar{Final Task}{8}{12}
   \ganttlink{elem2}{elem3}
   \ganttlink{elem3}{elem4}
 \end{ganttchart}
