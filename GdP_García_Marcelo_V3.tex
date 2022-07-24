@@ -1,10 +1,10 @@
 \documentclass[
-11pt, % The default document font size, options: 10pt, 11pt, 12pt
+11pt% The default document font size, options: 10pt, 11pt, 12pt
 %codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,shapes, arrows.meta, positioning}
+\usetikzlibrary{fit,shapes.geometric,shapes, arrows.meta, arrows, positioning}
 
 
 
@@ -486,7 +486,8 @@ Cantidad total de horas: (600 hs)
 Armar el AoN a partir del WBS definido en la etapa anterior. 
 
 %La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
+\documentclass{article}
+\begin document;
 %\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
 \tikzstyle{io} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
@@ -494,16 +495,18 @@ Armar el AoN a partir del WBS definido en la etapa anterior.
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 \begin{tikzpicture}[node distance=2cm]
-<TikZ code>
+%<TikZ code>
 
-\node (a) [startstop] {INICIO};
-\node (b) [io, below of=a] {test};
+\node (a) [startstop] {INICIO1};
+\node (b) [io, below of=a] {INICIO2};
 
-\node (in) [io, below of=b] {Input};
+\node (in) [io, below of=b] {INICIO3};
 
-\draw [arrow] (a) -- (b);
-
+\draw  (a) -- (b);
+%\draw (arrow);
+\draw [arrow]  (b) -- (in);
 \end{tikzpicture}
+
 
 \begin{figure}[htpb]
 \centering 
@@ -511,7 +514,7 @@ Armar el AoN a partir del WBS definido en la etapa anterior.
 \caption{Diagrama en \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
-
+\end document;
 Indicar claramente en qué unidades están expresados los tiempos.
 De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
 Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
