@@ -4,6 +4,7 @@
 ]{charter} 
 
 \usepackage{tikz}
+\usepackage{rotating}
 \usetikzlibrary{fit,shapes.geometric,shapes, arrows.meta, arrows, positioning}
 
 
@@ -483,103 +484,135 @@ Cantidad total de horas: (600 hs)
 
 
 
-Armar el AoN a partir del WBS definido en la etapa anterior. 
+EL diagrama de Activity On Node representa la dependencia entre las tareas listadas en la sección 9. Las tareas se agrupan por categorías en: planificación, investigación, backend, frontend, interfaz de comunicación, interfaz de adquisición, pruebas del sistema y cierre.
+
+El tiempo empleado para ejecutar cada tarea se representa mediante la variable \textit{"T"}, cuya unidad es cantidad de horas. Además, las tareas se agrupan en categorías identificadas mediante colores los cuales se detallan en el cuadro de referencias de la Figura 4.
+
+Finalmente se obtiene el camino crítico del diagrama de Activity On Node.
+
+\begin{table}[ht]
+\begin{tabularx}{\linewidth}{@{}|l|X|l|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+Descripción           & Tareas & T \\ \hline	%& Puesto 	\\ \hline
+%Auspiciante   &                   &              	&        	\\ \hline
+Camino crítico      & 1.1 - 1.5 - 2.1 - 2.4 - 4.1 - 4.2 - 4.3 - 5.1 - 5.2 - 5.3 - 6.1 - 7.2 - 8.2 - 8.3 - 8.4 - 8.5 - 8.6      &364	%& Jefe de Servicios
+       	\\ \hline
+%Impulsor      &                   &              	&        	\\ \hline
+%Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
+%Colaboradores &                   &              	&        	\\ \hline
+%Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
+%Equipo        & miembro1 \newline 
+				%&miembro2          &              	&        	\\ \hline
+%Opositores    &                   &              	&        	\\ \hline
+%Usuario final &Supervisor y técnicos de manatenimiento de servicios                    &ROEMMERS SAICF              	&   -     	\\ \hline
+\end{tabularx}
+\end{table}
+
+
 
 %La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-\documentclass{article}
-\begin document;
+
 %\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{io} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-
-\tikzstyle{arrow} = [thick,->,>=stealth]
-
-\begin{tikzpicture}[node distance=2cm]
-%<TikZ code>
-
-\node (a) [startstop] {INICIO1};
-\node (b) [io, below of=a] {INICIO2};
-
-<<<<<<< HEAD
-\node (in) [io, below of=b] {INICIO3};
-=======
-%\draw [arrow] (a) -- (b);
->>>>>>> 0af8692dc17de567012129e8b11ee813fa62ad6c
-
-\draw  (a) -- (b);
-%\draw (arrow);
-\draw [arrow]  (b) -- (in);
-\end{tikzpicture}
 
 
 \begin{figure}[htpb]
-\centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+%\centering 
+\includegraphics[width=1\textwidth]{./Figuras/aonv8.drawio.pdf}
 \caption{Diagrama en \textit{Activity on Node}}
-\label{fig:AoN}
+\label{fig:diagBloques}
 \end{figure}
-\end document;
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
+
+%\begin{figure}[htpb]
+%\centering 
+%\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+%\caption{Diagrama en \textit{Activity on Node}}
+%\label{fig:AoN}
+%\end{figure}
+
+%Indicar claramente en qué unidades están expresados los tiempos.
+%De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
+%Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, %como se muestra en el siguiente ejemplo:
 
 
-
+%\begin{landscape}
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre los cuales destacamos:
+%\begin{figure}[h]
+\centering
+\begin{sidewaysfigure}[htpb]
 
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
+\includegraphics[width=1\textwidth]{./Figuras/gantt_A5_1.pdf}
+\caption{Diagrama en \textit{Gantt Parte 1}}
+\label{fig:diagBloques}
+\end{sidewaysfigure}
 
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
+%\end{figure}
 
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-   \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
-\end{figure}
-
-
-\begin{landscape}
-\begin{figure}[htpb]
+%\end{landscape}
+%\begin{landscape}
+\begin{sidewaysfigure}[htpb]
 \centering 
-\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
-\caption{Ejemplo de diagrama de Gantt rotado}
-\label{fig:diagGantt}
-\end{figure}
+\includegraphics[width=1\textwidth]{./Figuras/gantt_A5_2_ed.pdf}
+\caption{Diagrama en \textit{Gantt Parte 2}}
+\label{fig:diagBloques}
+\end{sidewaysfigure}
 
-\end{landscape}
 
-\end{consigna}
 
+%\end{figure}
+%Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre los cuales destacamos:
+
+%\begin{itemize}
+%\item Planner
+%\item GanttProject
+%\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
+%\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
+%\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
+%\end{itemize}
+
+%Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
+%Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
+
+%Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
+%Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
+%Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
+
+%En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\begin{ganttchart}{1}{12}
+%  \gantttitle{2020}{12} \\
+%  \gantttitlelist{1,...,12}{1} \\
+%  \ganttgroup{Group 1}{1}{7} \\
+%  \ganttbar{Task 1}{1}{2} \\
+%  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
+%  \ganttmilestone{Milestone o hito}{7} \ganttnewline
+%   \ganttbar{Final Task}{8}{12}
+%  \ganttlink{elem2}{elem3}
+%  \ganttlink{elem3}{elem4}
+%\end{ganttchart}
+%\end{center}
+%\caption{Diagrama de gantt de ejemplo}
+%\label{fig:gantt}
+%\end{figure}
+
+
+%\begin{landscape}
+%\begin{figure}[htpb]
+%\centering 
+%\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
+%\caption{Ejemplo de diagrama de Gantt rotado}
+%\label{fig:diagGantt}
+%\end{figure}
+
+%\end{landscape}
+
+
+\flushleft
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
