@@ -75,11 +75,11 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1      & Se completa hasta el punto 5 inclusive                 & 5 de julio de 2022 \\ \hline
 1.1      & Se corrigen errores de redacción y se modifican gráficos			               & 8 de julio de 2022 \\ \hline
 2      & Se completa hasta el punto 9 inclusive 			               & 11 de julio de 2022 \\ \hline
-2.1      & Se corrigen errores de redacción 			               & 11 de julio de 2022 \\ \hline
+2.1      & Se corrigen errores de redacción 			               & 14 de julio de 2022 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
-3      & Se completa hasta el punto 12 inclusive                & 19 de julio de 2022 \\ \hline
+3      & Se completa hasta el punto 12 inclusive                & 25 de julio de 2022 \\ \hline
 %4      & Se completa el plan	                                 & dd/mm/aaaa \\ \hline
 \end{tabularx}
 \end{table}
@@ -421,7 +421,7 @@ Los entregables del proyecto son:
 	\item Definición del servicio de planta con el que se va a trabajar (1 hs).
 	\item Análisis y definición de datos a extraer del servicio (2 hs).
 	\item Nombramiento de los técnicos que participarán en las tareas del proyecto (1 hs).
-	\item Gestión de calendario de intervenciones en el servicio (3 hs).
+	\item Gestión del calendario de intervenciones en el servicio (3 hs).
 	\end{enumerate}
 \item Investigación (62 hs)
 	\begin{enumerate}
@@ -434,19 +434,19 @@ Los entregables del proyecto son:
 	\begin{enumerate}
 	\item Instalación del Servidor Linux (3 hs).
 	\item Diseño e instalación de la base de datos (15 hs).
-	\item Creación de la API (45 hs).
+	\item Creación de la API (40 hs).
 	\end{enumerate}
 \item Frontend (75 hs)
 	\begin{enumerate}
 	\item Creación de la SPA (38 hs).
 	\item Integración de las herramientas para la representación de datos (32 hs).
-	\item Integración con Backend (5 hs).
+	\item Integración con Backend (6 hs).
 	\end{enumerate}
-\item Interfaz de comunicación (142 hs)
+\item Interfaz de comunicación (146 hs)
 	\begin{enumerate}
 	\item Desarrollo del firmware de la interfaz de comunicación (40 hs).
 	\item Creación de biblioteca ModBUS (18 hs).
-	\item Creación de biblioteca SPI para adaptador Ethernet W5100 (35 hs).
+	\item Creación de biblioteca SPI para modulo Ethernet W5100 (35 hs).
 	\item Creación de biblioteca para radio del dispositivo (25 hs).
 	\item Diseño del circuito impreso de la interfaz de comunicación (12 hs).
 	\item Armado y prueba del circuito impreso en laboratorio (8 hs).
@@ -484,7 +484,7 @@ Cantidad total de horas: (600 hs)
 
 
 
-EL diagrama de Activity On Node representa la dependencia entre las tareas listadas en la sección 9. Las tareas se agrupan por categorías en: planificación, investigación, backend, frontend, interfaz de comunicación, interfaz de adquisición, pruebas del sistema y cierre.
+EL diagrama de Activity On Node representa la dependencia entre las tareas listadas en la sección 9. Las tareas se agrupan por categorías: planificación, investigación, backend, frontend, interfaz de comunicación, interfaz de adquisición, pruebas del sistema y cierre.
 
 El tiempo empleado para ejecutar cada tarea se representa mediante la variable \textit{"T"}, cuya unidad es cantidad de horas. Además, las tareas se agrupan en categorías identificadas mediante colores los cuales se detallan en el cuadro de referencias de la Figura 4.
 
@@ -519,7 +519,7 @@ Camino crítico      & 1.1 - 1.5 - 2.1 - 2.4 - 4.1 - 4.2 - 4.3 - 5.1 - 5.2 - 5.3
 \begin{figure}[htpb]
 %\centering 
 \includegraphics[width=1\textwidth]{./Figuras/aonv8.drawio.pdf}
-\caption{Diagrama en \textit{Activity on Node}}
+\caption{Tabla de \textit{Gantt}}
 \label{fig:diagBloques}
 \end{figure}
 
@@ -539,27 +539,43 @@ Camino crítico      & 1.1 - 1.5 - 2.1 - 2.4 - 4.1 - 4.2 - 4.3 - 5.1 - 5.2 - 5.3
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
 
+A partir de los diagramas de \emph{Activity On Node} de la sección \ref{sec:AoN} se realizó un diagrama de gantt.\\
 
-%\begin{figure}[h]
+
+
+
+
+
+\begin{figure}[htpb]
 \centering
-\begin{sidewaysfigure}[htpb]
+%\begin{sidewaysfigure}[htpb]
+\includegraphics[width=0.8\textwidth]{./Figuras/tablagantt.pdf}
+\caption{Tabla de \textit{Gantt}}
+\label{fig:gantt1}
+\end{figure}
 
-\includegraphics[width=1\textwidth]{./Figuras/gantt_A5_1.pdf}
-\caption{Diagrama en \textit{Gantt Parte 1}}
-\label{fig:diagBloques}
-\end{sidewaysfigure}
+\begin{figure}[htpb]
+\centering
+%\begin{sidewaysfigure}[htpb]
+\includegraphics[width=1\textwidth]{./Figuras/gantt_A5_1_ed2.pdf}
+\caption{Diagrama de \textit{Gantt Parte 1}}
+\label{fig:gantt2}
+\end{figure}
 
 %\end{figure}
 
 %\end{landscape}
 %\begin{landscape}
-\begin{sidewaysfigure}[htpb]
-\centering 
-\includegraphics[width=1\textwidth]{./Figuras/gantt_A5_2_ed.pdf}
-\caption{Diagrama en \textit{Gantt Parte 2}}
-\label{fig:diagBloques}
-\end{sidewaysfigure}
+%\begin{sidewaysfigure}[htpb]
 
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/gantt_A5_2_ed2.pdf}
+\caption{Diagrama en \textit{Gantt Parte 2}}
+\label{fig:gantt3}
+%\end{sidewaysfigure}
+\end{figure}
 
 
 %\end{figure}
@@ -617,16 +633,10 @@ Camino crítico      & 1.1 - 1.5 - 2.1 - 2.4 - 4.1 - 4.2 - 4.3 - 5.1 - 5.2 - 5.3
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-	\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
 
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
+A continuación se detallan los costos del proyecto
 
-\end{consigna}
+
 
 \begin{table}[htpb]
 \centering
@@ -639,24 +649,32 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+  \multicolumn{1}{|l|}{Placa STM32F411}&
+  \multicolumn{1}{c|}{2} & 
+  \multicolumn{1}{c|}{USD 11,23} &
+  \multicolumn{1}{c|}{USD 22,46} \\ \hline
+  \multicolumn{1}{|l|}{Placa ESP32S}&
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{USD 7,17} &
+  \multicolumn{1}{c|}{USD 14,34} \\ \hline
+  \multicolumn{1}{|l|}{Modulo LoRA RYLR896} &
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{USD 9,98} &
+  \multicolumn{1}{c|}{USD 19,96} \\ \hline
+  \multicolumn{1}{|l|}{Modulo Ethernet W5100} &
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{USD 12,9} &
+  \multicolumn{1}{c|}{USD 25,8} \\ \hline
+  \multicolumn{1}{|l|}{Modulo Zigbee CC2530} &
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{USD 11,2} &
+  \multicolumn{1}{c|}{USD 22,4} \\ \hline
+  \multicolumn{1}{|l|}{Materiales para PCB / gabinete} &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{USD 45} &
+  \multicolumn{1}{c|}{USD 45} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{USD 149,96} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 

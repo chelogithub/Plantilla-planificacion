@@ -1,0 +1,56 @@
+"WBS #","Name / Title",Type,"Start Date","End Date","Estimated Hours","Actual Hours","Percent Complete",Resources,Predecessors,Notes,Comments,"Task Color"
+1,gantt,project,2022-07-21,2023-04-22,0,0,0,,,,,
+1.1,"1 - Planificación",group,2022-07-21,2022-08-02,0,0,0,,,,,
+1.1.1,"1.1 Análisis de la problemática actual",task,2022-07-21,2022-07-27,0,0,0,,,,"Marcelo García on 2022-07-24 22:46:25
+
+COMM",blue2
+1.1.2,"1.2 Definición del servicio de planta con el que se va a trabajar",task,2022-07-28,2022-07-28,0,0,0,,1.1.1,,,blue2
+1.1.3,"1.3 Análisis y definición de datos a extraer del servicio",task,2022-07-29,2022-07-29,0,0,0,,1.1.1,,,blue2
+1.1.4,"1.4 Nombramiento de los técnicos que participarán en las tareas del proyecto",task,2022-07-30,2022-07-30,0,0,0,,1.1.1,,,blue2
+1.1.5,"1.5 Gestión de calendario de intervenciones en el servicio",task,2022-08-01,2022-08-01,0,0,0,,1.1.1,,,blue2
+1.1.6,"Hito 1",milestone,2022-08-02,2022-08-02,0,0,0,,"1.1.2,1.1.3,1.1.4,1.1.5",,,blue2
+1.2,"2 - Investigación",group,2022-08-03,2022-08-30,0,0,0,,,,,
+1.2.1,"2.1 Prueba en campo de tecnologías LoRA / LoRAWAN",task,2022-08-03,2022-08-12,0,0,0,,1.1.6,,,blue2
+1.2.2,"2.2 Prueba en campo de tecnologías Zigbee / Wi-Fi",task,2022-08-14,2022-08-23,0,0,0,,1.1.6,,,blue2
+1.2.3,"2.3 Determinar método de medición de datos",task,2022-08-24,2022-08-24,0,0,0,,"1.2.1,1.2.2",,,blue2
+1.2.4,"2.4 Evaluar herramientas de representación de datos con dashboards y gráficos",task,2022-08-25,2022-08-29,0,0,0,,"1.2.1,1.2.3",,,blue2
+1.2.5,"Hito 2",milestone,2022-08-30,2022-08-30,0,0,0,,"1.2.3,1.2.4",,,blue2
+1.3,"3 - Backend",group,2022-08-31,2022-09-24,0,0,0,,,,,
+1.3.1,"3.1 Instalación del Servidor Linux",task,2022-08-31,2022-08-31,0,0,0,,1.2.5,,,blue2
+1.3.2,"3.2 Diseño e instalación de la base de datos",task,2022-09-01,2022-09-05,0,0,0,,1.3.1,,,blue2
+1.3.3,"3.3 Creación de la API",task,2022-09-04,2022-09-23,0,0,0,,1.2.5,,,blue2
+1.3.4,"Hito 3",milestone,2022-09-24,2022-09-24,0,0,0,,"1.3.2,1.3.3",,,blue2
+1.4,"4 - Frontend",group,2022-09-04,2022-10-09,0,0,0,,,,,
+1.4.1,"4.1 Creación de la SPA ",task,2022-09-04,2022-09-25,0,0,0,,1.2.5,,,blue2
+1.4.2,"4.2 Integración de las herramientas para la representación de datos",task,2022-09-26,2022-10-08,0,0,0,,1.4.1,,,blue2
+1.4.3,"4.3 Integración con Backend",task,2022-09-26,2022-09-27,0,0,0,,1.4.1,,,blue2
+1.4.4,"Hito 4",milestone,2022-10-09,2022-10-09,0,0,0,,"1.3.4,1.4.2,1.4.3",,,blue2
+1.5,"5 - Interfaz de comunicación",group,2022-10-10,2022-12-11,0,0,0,,,,,
+1.5.1,"5.1 Desarrollo del firmware de la interfaz de comunicación ",task,2022-10-10,2022-10-29,0,0,0,,1.4.4,,,blue2
+1.5.2,"5.2 Creación de biblioteca ModBUS",task,2022-10-31,2022-11-12,0,0,0,,1.5.1,,,blue2
+1.5.3,"5.3 Creación de biblioteca SPI para adaptador Ethernet W5100 ",task,2022-11-14,2022-12-03,0,0,0,,1.5.2,,,blue2
+1.5.4,"5.4 Creación de biblioteca para radio del dispositivo",task,2022-11-28,2022-12-10,0,0,0,,1.5.2,,,blue2
+1.5.5,"5.5 Diseño del circuito impreso de la interfaz de comunicación",task,2022-11-07,2022-11-12,0,0,0,,1.5.1,,,blue2
+1.5.6,"5.6 Armado y prueba del circuito impreso en laboratorio",task,2022-11-16,2022-11-19,0,0,0,,1.5.5,,,blue2
+1.5.7,"5.7 Diseño del gabinete",task,2022-11-24,2022-11-26,0,0,0,,1.5.6,,,blue2
+1.5.8,"Hito 5",milestone,2022-12-11,2022-12-11,0,0,0,,"1.5.3,1.5.4,1.5.7",,,blue2
+1.6,"6 -Interfaz de adquisición",group,2022-12-12,2023-01-24,0,0,0,,,,,
+1.6.1,"6.1 Desarrollo del firmware de la interfaz de adquisición",task,2022-12-12,2022-12-24,0,0,0,,1.5.8,,,blue2
+1.6.2,"6.2 Diseño del circuito GPIO adaptador de niveles ",task,2022-12-22,2022-12-27,0,0,0,,1.5.8,,,blue2
+1.6.3,"6.3 Prueba del circuito en laboratorio",task,2022-12-29,2022-12-30,0,0,0,,1.6.2,,,blue2
+1.6.4,"6.4 Diseño del circuito impreso de la interfaz de adquisición",task,2023-01-02,2023-01-07,0,0,0,,1.6.3,,,blue2
+1.6.5,"6.5 Armado y prueba del circuito impreso de la interfaz de adquisición",task,2023-01-09,2023-01-14,0,0,0,,1.6.4,,,blue2
+1.6.6,"6.6 Diseño del gabinete ",task,2023-01-16,2023-01-18,0,0,0,,1.6.5,,,blue2
+1.6.7,"Hito 6",milestone,2023-01-24,2023-01-24,0,0,0,,"1.6.1,1.6.6",,,blue2
+1.7,"7 - Pruebas del sistema",group,2023-01-25,2023-03-09,0,0,0,,,,,
+1.7.1,"7.1 Creación y ejecución del protocolo de pruebas del sistema ",task,2023-01-25,2023-02-04,0,0,0,,1.6.7,,,blue2
+1.7.2,"7.2 Seguimiento del funcionamiento del sistema en campo ",task,2023-02-06,2023-03-07,0,0,0,,1.7.1,,,blue2
+1.7.3,"Hito 7",milestone,2023-03-09,2023-03-09,0,0,0,,1.7.2,,,blue2
+1.8,"8 - Cierre",group,2023-03-10,2023-04-22,0,0,0,,,,,
+1.8.1,"8.1 Creación de manuales de uso e instalación",task,2023-03-10,2023-03-18,0,0,0,,1.7.3,,,blue2
+1.8.2,"8.2 Creación de informes de avance de proyecto",task,2023-03-13,2023-03-20,0,0,0,,1.7.3,,,blue2
+1.8.3,"8.3 Creación de informe final de desempeño del proyecto",task,2023-03-22,2023-04-01,0,0,0,,"1.8.1,1.8.2",,,blue2
+1.8.4,"8.4 Creación de la memoria del trabajo ",task,2023-04-03,2023-04-15,0,0,0,,1.8.3,,,blue2
+1.8.5,"8.5 Creación del video de demostración ",task,2023-04-17,2023-04-20,0,0,0,,1.8.4,,,blue2
+1.8.6,"8.6 Defensa pública y agradecimientos",task,2023-04-21,2023-04-21,0,0,0,,1.8.5,,,blue2
+1.8.7,"Hito 8",milestone,2023-04-22,2023-04-22,0,0,0,,1.8.6,,,blue2
